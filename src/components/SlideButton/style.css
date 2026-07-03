@@ -1,0 +1,11 @@
+.slide-button {
+    display: flex;
+    justify-content: center;
+    padding-top: 25px;
+    gap: 30px;
+}
+
+.slide-button p {
+    font-family: "Inter", sans-serif;
+    color: rgba(82, 96, 113, 1);
+}

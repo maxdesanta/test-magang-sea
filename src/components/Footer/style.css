@@ -1,0 +1,145 @@
+.footer-container {
+    background-color: #2d3748; 
+    color: #ffffff;
+    padding: 60px 0;
+    font-family: "Nunito Sans", sans-serif;
+    width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1420px;
+    margin: 0 auto;
+    gap: 40px;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.footer-logo h2 {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.copyright {
+    color: rgba(242, 242, 242, 1);
+    font-size: 14px;
+    margin: 0 0 30px 0;
+}
+
+.social-section h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 16px 0;
+}
+
+.social-icons {
+    display: flex;
+    gap: 16px;
+}
+
+.social-icon {
+    width: 36px;
+    height: 36px;
+    background-color: #cbd5e1;
+    color: #2d3748;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.2s;
+}
+
+.social-icon:hover {
+    background-color: #ffffff;
+}
+
+.links-column h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 20px 0;
+    color: #ffffff;
+}
+
+.links-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px; 
+}
+
+.links-column ul li a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.links-column ul li a:hover {
+    color: #ffffff;
+}
+
+.newsletter-column h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 20px 0;
+}
+
+.subscribe-box {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 6px 6px 6px 16px;
+    width: 320px; 
+}
+
+.subscribe-box input {
+    border: none;
+    outline: none;
+    font-family: inherit;
+    font-size: 14px;
+    width: 100%;
+    color: #333333;
+}
+
+.subscribe-box input::placeholder {
+    color: #a0aec0;
+}
+
+.subscribe-btn {
+    background-color: #0084ff; 
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    flex-shrink: 0;
+}
+
+.subscribe-btn:hover {
+    background-color: #0066cc;
+}

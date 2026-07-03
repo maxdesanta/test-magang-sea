@@ -1,0 +1,55 @@
+.slide-card {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* slide text */
+.slide-card .slide-text {
+    width: 30%;
+}
+
+.slide-card .slide-text .link-detail-group {
+    padding-top: 1em;
+}
+
+.slide-card .slide-text .link-detail-group a {
+    color: rgba(0, 144, 255, 1);
+    font-weight: 500;
+}
+
+.slide-card .slide-text h3 {
+    font-weight: 600;
+    color: rgba(82, 96, 113, 1);
+}
+
+.slide-card .slide-text p {
+    color: rgba(79, 79, 79, 1);
+    text-align: justify;
+    line-height: 1.5;
+    font-family: "Inter", sans-serif;
+}
+
+.slide-card .slide-text p, h1 {
+    margin: 0;
+}
+
+.slide-card .slide-text .slide-group-title-news {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.slide-card .slide-text .date-group-slide-text {
+    display: flex;
+    gap: 8px;
+}
+
+/* slide img */
+.slide-card .slide-image {
+    width: 100%;
+}
+
+.slide-card .slide-img img {
+    border-radius: 30px;
+}

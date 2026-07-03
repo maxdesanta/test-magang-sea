@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+}
+
+#root {
+  max-width: 100%;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+input {
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+.active {
+  color: rgba(0, 144, 255, 1);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  font-family: "Inter", sans-serif;
+}

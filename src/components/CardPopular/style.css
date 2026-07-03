@@ -1,0 +1,53 @@
+.news-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px; 
+    max-width: 400px; 
+    padding: 10px;
+    font-family: "Nunito Sans", sans-serif;
+    padding-right: 20px;
+}
+
+.news-card .image-container .badge-number {
+    color: white;
+    background: black;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container {
+    position: relative;
+    flex-shrink: 0; 
+}
+
+.news-image {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 110px;
+    width: 50%;
+}
+
+.content-container .news-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.content-container h4 {
+    margin: 0;
+}
