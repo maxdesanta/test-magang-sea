@@ -3,6 +3,7 @@ import logoLight from '../../assets/logo-light.svg'
 import youtube from '../../assets/youtube.svg'
 import instagram from '../../assets/instagram.svg'
 import facebook from '../../assets/facebook.svg'
+import sendIcon from '../../assets/send.svg'
 
 export default function Footer() {
     return (
@@ -53,13 +54,10 @@ export default function Footer() {
                 <div className="footer-column newsletter-column">
                     <h3>Berlangganan Berita Terbaru</h3>
                     <div className="subscribe-box">
-                    <input type="email" placeholder="Masukan email" />
-                    <button type="submit" className="subscribe-btn">
-                        {/* Ikon pesawat kertas / kirim */}
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                    </button>
+                        <input type="email" placeholder="Masukan email" />
+                        <button type="submit" className="subscribe-btn">
+                            <img src={sendIcon} alt="logo" width={42} />
+                        </button>
                     </div>
                 </div>
             </div>

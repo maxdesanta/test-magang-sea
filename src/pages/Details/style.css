@@ -1,0 +1,291 @@
+.details-main {
+    display: flex;
+    gap: 40px;
+    align-items: start;
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.details-main .details-article {
+    width: 70%;
+    padding: 40px 0;
+    font-family: "Inter", sans-serif;
+}
+
+.details-main .popular-news {
+    width: 30%;                     
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+.details-main .popular-news > div {
+    border-bottom: 1px solid rgba(224, 224, 224, 1); 
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.details-main .popular-news > div:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.details-main .popular-news > div:first-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.details-main .details-article .details-article-title h1 {
+    margin-bottom: 5px;
+}
+
+.details-main .details-article .details-article-title {
+    margin-bottom: 35px;
+}
+
+.details-main .details-article .news-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.details-main .details-article .details-article-img {
+    margin-bottom: 20px;
+}
+
+.details-main .details-article .details-article-img img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.details-main .details-article .details-article-img .details-article-caption {
+    font-size: 0.8rem;
+    color: rgba(149, 158, 169, 1);
+}
+
+.details-main .details-article .details-article-img .details-article-content {
+    line-height: 1.8;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.details-main .details-article .details-article-img .details-article-content p {
+    color: rgba(82, 96, 113, 1);
+    font-size: 15px;
+    margin-bottom: 16px;
+}
+
+.details-article-comment {
+    margin-top: 50px;
+}
+
+.details-article-comment .comment-group-input {
+    display: flex;
+    gap: 8px;
+    border-bottom: 1px solid rgba(224, 224, 224, 1);
+    padding: 0 20px 20px 20px;
+}
+
+.details-article-comment .comment-group-input img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.details-article-comment .comment-group-input .comment-input {
+    border: 1px solid rgba(224, 224, 224, 1);
+    border-radius: 5px;
+    padding: 10px;
+    height: 150px;
+}
+
+.details-article-comment .comment-form p {
+    font-size: 0.7rem;
+    text-align: right;
+}
+
+.details-article-comment .comment-form .btn-comment {
+    color: white;
+    background-color: rgba(0, 144, 255, 1);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+}
+
+.details-article-comment .comment-list {
+    border-bottom: 1px solid rgba(224, 224, 224, 1);
+    padding: 20px 10PX;
+    max-width: 800px;
+    font-family: "Nunito Sans", sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.comment-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+}
+
+.comment-item.reply {
+    padding-left: 52px; 
+}
+
+.comment-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px; 
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.comment-avatar.small {
+    width: 40px;
+    height: 40px;
+}
+
+.comment-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.comment-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+}
+
+.comment-author {
+    font-weight: 700;
+    color: rgba(82, 96, 113, 1); 
+    text-transform: uppercase; 
+}
+
+.comment-dot {
+    width: 4px;
+    height: 4px;
+    background-color: rgba(189, 189, 189, 1);
+    border-radius: 50%;
+}
+
+.comment-date {
+    color: rgba(189, 189, 189, 1); 
+}
+
+.comment-text {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.5;
+    color: rgba(51, 51, 51, 1);
+}
+
+.reply-btn {
+    background: none;
+    border: none;
+    color: rgba(0, 144, 255, 1); 
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0;
+    align-self: flex-start;
+    transition: color 0.2s ease;
+}
+
+.reply-btn:hover {
+    color: rgba(0, 146, 255, 1);
+    text-decoration: underline;
+}
+
+.table-pagination-container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    width: 100%;
+    padding: 16px 0;
+    font-family: "Nunito Sans", sans-serif;
+}
+
+.pagination-left {
+    display: flex;
+    align-items: center;
+    gap: 12px; 
+}
+
+.pagination-text {
+    font-size: 14px;
+    color: rgba(51, 51, 51, 1); 
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper select {
+    font-family: inherit;
+    font-size: 14px;
+    color: rgba(51, 51, 51, 1);
+    padding: 4px 24px 4px 8px; 
+    border: none;
+    border-bottom: 1px solid rgba(224, 224, 224, 1);
+    background: transparent;
+    cursor: pointer;
+    outline: none;
+    font-weight: 500;
+}
+
+.pagination-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.pagination-right button {
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+}
+
+.page-btn {
+    color: rgba(82, 96, 113, 1); 
+    font-weight: 500;
+    padding: 4px 8px;
+}
+
+.page-btn.active {
+    color: rgba(0, 144, 255, 1); 
+    font-weight: 700;
+}
+
+.see-all-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.see-all-group .see-all-btn {
+    padding: 10px 20px;
+    border: 1px solid rgba(0, 144, 255, 1);
+    background-color: rgba(226, 242, 255, 1);
+    color: rgba(0, 144, 255, 1);
+    outline: none;
+    border-radius: 8px;
+    cursor: pointer;
+}

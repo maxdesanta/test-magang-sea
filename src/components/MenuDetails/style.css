@@ -1,0 +1,6 @@
+.menu-details {
+    display: flex;
+    gap: 14px;
+    font-family: "Inter", sans-serif;
+    color: rgba(51, 51, 51, 1);
+}
