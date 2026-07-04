@@ -4,6 +4,7 @@ import youtube from '../../assets/youtube.svg'
 import instagram from '../../assets/instagram.svg'
 import facebook from '../../assets/facebook.svg'
 import sendIcon from '../../assets/send.svg'
+import { NavLink } from 'react-router-dom'
 
 export default function Footer() {
     return (
@@ -34,13 +35,13 @@ export default function Footer() {
                 <div className="footer-column links-column">
                     <h3>Telusuri</h3>
                     <ul>
-                    <li><a href="#beranda">Beranda</a></li>
-                    <li><a href="#kesehatan">Kesehatan</a></li>
-                    <li><a href="#otomotif">Otomotif</a></li>
-                    <li><a href="#politik">Politik</a></li>
-                    <li><a href="#olahraga">Olahraga</a></li>
-                    <li><a href="#nasional">Nasional</a></li>
-                    <li><a href="#internasional">Internasional</a></li>
+                        <li><NavLink to="/" >Beranda</NavLink></li>
+                        <li><NavLink to="/dunia" >Dunia</NavLink></li>
+                        <li><NavLink to="/otomotif" >Otomotif</NavLink></li>
+                        <li><NavLink to="/politik">Politik</NavLink></li>
+                        <li><NavLink to="/olahraga" >Olahraga</NavLink></li>
+                        <li><NavLink to="/nasional" >Nasional</NavLink></li>
+                        <li><NavLink to="/internasional">Internasional</NavLink></li>
                     </ul>
                 </div>
                 <div className="footer-column links-column">

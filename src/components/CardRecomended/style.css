@@ -31,3 +31,10 @@
     margin-top: 12px;
 }
 
+.news-card-link {
+    display: inline-block; 
+    width: 100%;          
+    text-decoration: none;
+    color: inherit;
+}
+

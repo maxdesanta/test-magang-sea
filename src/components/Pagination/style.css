@@ -1,7 +1,7 @@
 /* Container Utama */
 .pagination-container {
     display: flex;
-    justify-content: space-between; /* Teks di kiri, tombol di kanan */
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     padding-top: 30px;
@@ -11,14 +11,14 @@
 /* Info Teks di Kiri */
 .pagination-info {
     font-size: 14px;
-    color: #475569; /* Warna teks abu-abu gelap */
+    color: #475569; 
 }
 
 /* Grouping Tombol Navigasi di Kanan */
 .pagination-nav {
     display: flex;
     align-items: center;
-    gap: 8px; /* Jarak antar tombol */
+    gap: 8px; 
 }
 
 /* Pengaturan Umum Tombol (Angka & Arrow) */
@@ -38,7 +38,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 8px; /* Membuat sudut tombol melengkung */
+    border-radius: 8px; 
     color: #475569;
     font-weight: 600;
 }

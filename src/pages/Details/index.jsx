@@ -6,24 +6,85 @@ import arrowLeftIcon from '../../assets/arrow-left.svg'
 import arrowRightIcon from '../../assets/arrow-right.svg'
 import CardPopular from "../../components/CardPopular";
 import CardRecomended from "../../components/CardRecomended";
+import { useLocation, useNavigate } from "react-router-dom";
+import { topNewsApi } from "../../api/topNewsApi";
+import { useEffect, useState } from "react";
+import { todayNewsApi } from "../../api/todayNewsApi";
 
 
 export default function Details() {
+    const location = useLocation();
+    const navigate = useNavigate();
+    const [topNews, setTopNews] = useState();
+    const [relatedNews, setRelatedNews] = useState([]);
+    const article = location.state?.articleData;
+    const rawCategory = article?.categories;
+    const displayCategory = Array.isArray(rawCategory) ? rawCategory[0] : (rawCategory || "News");
+    const source = article?.sourcePage || "Beranda";
+
+    const getDataTopNews = async () => {
+        try {
+            const response = await topNewsApi();
+            setTopNews(response);
+        } catch (error) {
+            console.log(error.message);
+        }
+    };
+
+    const handleSeeAll = () => {
+        if (source === "Beranda" || source === "Terbaru") {
+            navigate('/terbaru');
+        } else {
+            // Mengarah ke route kategori tertentu (dibuat lowercase, misal: /nasional atau /politik)
+            navigate(`/${source.toLowerCase()}`);
+        }
+    };
+
+    const fetchRelatedNews = async () => {
+        try {
+            const response = await todayNewsApi(); 
+            const clearCurrentArticle = response.filter(item => item.link !== article?.link);
+
+            let filtered = clearCurrentArticle.filter(item => {
+                const relatedCategory = Array.isArray(item.categories) ? item.categories[0] : item.categories;
+                return relatedCategory?.toLowerCase() === displayCategory?.toLowerCase();
+            });
+
+            if (filtered.length === 0) {
+                filtered = clearCurrentArticle;
+            }
+
+            const shuffled = [...filtered].sort(() => 0.5 - Math.random());
+            
+            setRelatedNews(shuffled.slice(0, 4));
+        } catch (error) {
+            console.log("Gagal memuat berita terkait:", error.message);
+        }
+    };
+
+    useEffect(() => {
+        fetchRelatedNews();
+        getDataTopNews();
+
+        return () => setRelatedNews([]);
+    }, [article?.link, displayCategory]);
     return (
         <main>
-            <MenuDetails />
+            <MenuDetails titleCategory={displayCategory} source={source} />
             <div className="details-main">
                 <div className="details-article">
                     <div className="details-article-title">
-                        <h1>Pj. Gubernur Adhy Tekankan Pelayanan Berkualitas saat Sharing Session di RSUD Dr. Soetomo</h1>
-                        <DateWritter />
+                        <h1>{article.title}</h1>
+                        <DateWritter date={article.isoDate} category={article?.categories} />
                     </div>
                     <div className="details-article-img">
-                        <img src="https://images.unsplash.com/photo-1602674809970-89073c530b0a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="image-details" />
-                        <p className="details-article-caption">Rumput GBK tidak kunjung bagus, Timnas Indonesia bisa pindah kandang. (CNN Indonesia/Adhi Wicaksono)</p>
+                        <img src={typeof article?.image === 'object' ? article?.image?.small : article?.image} alt="image-details" />
+                        <p className="details-article-caption">{article.link}</p>
                     </div>
                     <div className="details-article-content">
-                        <p>Jakarta, CNN Indonesia --Ketua Badan Tim Nasional (BTN) PSSI Sumardji merespons peluang Timnas  Indonesia pindah dari Stadion Utama Gelora Bung Karno (GBK) apabila  lolos ke putaran ketiga Kualifikasi Piala Dunia 2026. Akhir-akhir ini rumput lapangan Stadion GBK yang jadi markas Indonesia  dalam babak kedua Kualifikasi Piala Dunia 2026 kerap bermasalah. Pada pertandingan kandang pertama melawan Vietnam, Maret lalu, rumput  GBK rusak parah. PPKGBK selalu pengelola pun mendapat kritik deras.Acara-acara di luar  sepak bola itu kerap membuat kondisi rumput tidak sehat dan tidak  terlihat bagus saat pertandingan, khususnya laga Timnas Indonesia. Sampai saat melawan Irak, rumput GBK tidak terlihat sempurna meskipun  kondisinya lebih bagus dibanding lawan Vietnam. Opsi pindah kandang pun  muncul."Nanti kami akan  sampaikan [rencana pindah dari GBK]," ujar Sumardji saat ditanya  kemungkinan menggunakan stadion lain di putaran ketiga kualifikasi. Sumardji tidak membantah kondisi rumput GBK yang masih kurang bagus  dalam duel Indonesia vs Irak. PSSI pun berharap PPKGBK bisa lebih  memperhatikan kondisi rumput untuk pertandingan Skuad Garuda. "Kami sampai saat ini sudah telepon dengan pengelola GBK karena kondisi  rumput kemarin kurang bagus, kami memohon ke pihak GBK supaya  betul-betul disiapkan dan diperhatikan kondisi rumput," tutur Sumardji. "Kalau dilihat-lihat sepertinya kondisi rumput GBK kayaknya stres itu,  sehingga dengan kondisi itu akan memengaruhi, tadi saya telepon supaya  diperhatikan," kata Sumardji menambahkan.</p>
+                        <p>
+                            {article?.description || article?.contentSnippet}
+                        </p>
                     </div>
                     <div className="details-article-comment">
                         <TitlePages title='Komentar' />
@@ -32,10 +93,10 @@ export default function Details() {
                             
                             <div className="comment-form">
                                 <div className="comment-input">
-                                    <textarea placeholder="Tulis komentar" cols={30} rows={10}></textarea>  
+                                    <textarea placeholder="Tulis komentar" cols={100} rows={10}></textarea>  
                                 </div>
                                 <p>0 / 50</p>
-                                <button type="submit" className="btn-comment">Kirim</button>
+                                <button type="submit" className="btn-comment" onClick={handleSeeAll}>Kirim</button>
                             </div>
                         </div>
                         <div className="comment-list">
@@ -107,17 +168,41 @@ export default function Details() {
                         <button className="see-all-btn">Lihat Semua</button>
                     </div>
                     <div className="container-popular-news">
-                        <CardRecomended />
-                        <CardRecomended />
-                        <CardRecomended />
-                        <CardRecomended />
+                        {relatedNews.map((item, index) => {
+                            const relatedCategory = Array.isArray(item.categories) ? item.categories[0] : (item.categories || "News");
+                            
+                            // Buat data tiruan baru untuk dioper ke halaman detail berikutnya saat diklik
+                            const updatedRelatedItem = {
+                                ...item,
+                                categories: [relatedCategory],
+                                sourcePage: source // Pertahankan halaman asal agar breadcrumb tetap konsisten
+                            };
+
+                            return (
+                                <CardRecomended 
+                                    key={index} 
+                                    id={encodeURIComponent(item.link)} 
+                                    title={item.title} 
+                                    image={typeof item.image === 'object' ? item.image?.small : item.image} 
+                                    date={item.isoDate} 
+                                    category={relatedCategory} 
+                                    fullData={updatedRelatedItem} 
+                                />
+                            );
+                        })}
                     </div>
                 </div>
                 <div className="popular-news">
                     <TitlePages title='Berita Terpopuler' />
-                    <CardPopular />
-                    <CardPopular />
-                    <CardPopular />
+                    <div className="sidebar-popular-list">
+                        {topNews?.slice(0, 3).map((item, index) => {
+                            return (
+                                <div key={index} className="sidebar-card-wrapper">
+                                    <CardPopular id={encodeURIComponent(item.link)} number={index + 1} image={item.image} title={item.title} date={item.isoDate} fullData={item} />
+                                </div>
+                            )
+                        })}
+                        </div>
                 </div>
             </div>
         </main>

@@ -1,5 +1,5 @@
 main {
-    padding: 30px;
+    padding: 120px 30px 400px 30px;
 }
 
 .slide-group, .popular-news-group, .recomended-news-group {
@@ -68,6 +68,7 @@ main {
     height: 12px;
     border-radius: 50%;
     background-color: rgba(173, 181, 189, 1);
+    transition: all 0.3s ease;
 }
 
 .slider-bottom .dot-active {

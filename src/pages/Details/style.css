@@ -289,3 +289,15 @@
     border-radius: 8px;
     cursor: pointer;
 }
+
+.sidebar-card-wrapper {
+    border-bottom: 1px solid rgba(226, 242, 255, 1);; 
+    padding-bottom: 16px;            
+    margin-bottom: 16px;          
+}
+
+.sidebar-card-wrapper:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
