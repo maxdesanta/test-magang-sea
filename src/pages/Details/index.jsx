@@ -1,5 +1,4 @@
 import DateWritter from "../../components/DateWritter";
-import MenuDetails from "../../components/menuDetails";
 import TitlePages from "../../components/TitlePages";
 import './style.css'
 import arrowLeftIcon from '../../assets/arrow-left.svg'
@@ -10,6 +9,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { topNewsApi } from "../../api/topNewsApi";
 import { useEffect, useState } from "react";
 import { todayNewsApi } from "../../api/todayNewsApi";
+import MenuDetails from "../../components/MenuDetails";
 
 
 export default function Details() {
@@ -17,6 +17,7 @@ export default function Details() {
     const navigate = useNavigate();
     const [topNews, setTopNews] = useState();
     const [relatedNews, setRelatedNews] = useState([]);
+    const [comment, setComment] = useState('');
     const article = location.state?.articleData;
     const rawCategory = article?.categories;
     const displayCategory = Array.isArray(rawCategory) ? rawCategory[0] : (rawCategory || "News");
@@ -24,7 +25,8 @@ export default function Details() {
 
     const getDataTopNews = async () => {
         try {
-            const response = await topNewsApi();
+            const response = await topNewsApi("top-news");
+            console.log(response);
             setTopNews(response);
         } catch (error) {
             console.log(error.message);
@@ -39,6 +41,20 @@ export default function Details() {
             navigate(`/${source.toLowerCase()}`);
         }
     };
+
+    const handleCommentChange = (e) => {
+        const text = e.target.value;
+        const words = text.trim().split(/\s+/).filter(Boolean);
+    
+        if (words.length <= 50) {
+            setComment(text);
+        } else {
+            const truncatedText = text.split(/\s+/).slice(0, 50).join(" ");
+            setComment(truncatedText);
+        }
+    };
+    
+    const currentWordCount = comment.trim().split(/\s+/).filter(Boolean).length;
 
     const fetchRelatedNews = async () => {
         try {
@@ -93,9 +109,9 @@ export default function Details() {
                             
                             <div className="comment-form">
                                 <div className="comment-input">
-                                    <textarea placeholder="Tulis komentar" cols={100} rows={10}></textarea>  
+                                    <textarea placeholder="Tulis komentar" cols={100} rows={10} value={comment} onChange={handleCommentChange}></textarea>  
                                 </div>
-                                <p>0 / 50</p>
+                                <p>{currentWordCount} / 50</p>
                                 <button type="submit" className="btn-comment" onClick={handleSeeAll}>Kirim</button>
                             </div>
                         </div>
@@ -175,7 +191,7 @@ export default function Details() {
                             const updatedRelatedItem = {
                                 ...item,
                                 categories: [relatedCategory],
-                                sourcePage: source // Pertahankan halaman asal agar breadcrumb tetap konsisten
+                                sourcePage: source 
                             };
 
                             return (
