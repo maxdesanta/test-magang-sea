@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './style.css'
-import { newsApi } from '../../api/NewsApi';
+import { newsApi } from '../../api/newsApi';
 import TitlePages from '../../components/TitlePages';
 import Pagination from '../../components/Pagination';
 import SearchIcon from '../../assets/search-icon.svg';
