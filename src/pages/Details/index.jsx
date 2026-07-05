@@ -94,7 +94,10 @@ export default function Details() {
                         <DateWritter date={article.isoDate} category={article?.categories} />
                     </div>
                     <div className="details-article-img">
-                        <img src={typeof article?.image === 'object' ? article?.image?.small : article?.image} alt="image-details" />
+                        <img 
+                            src={(typeof article?.image === 'object' ? article?.image?.small : article?.image) || "https://taawon.com/images_default/default.jpg"} 
+                            alt="image-details" 
+                        />
                         <p className="details-article-caption">{article.link}</p>
                     </div>
                     <div className="details-article-content">

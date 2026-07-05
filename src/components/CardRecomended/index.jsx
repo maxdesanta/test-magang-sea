@@ -7,7 +7,7 @@ export default function CardRecomended({title, image, date, category = "Politik"
         <div className='card-recomended'>
             <Link to={`/detail/${id}`} state={{ articleData: fullData }} className='news-card-link'>
                 <div className="image-card">
-                    <img src={image} alt={title} />
+                    <img src={image == null || image == "" ? "https://taawon.com/images_default/default.jpg" : image} alt={title} />
                 </div>
                 <div className='text-card'>
                     <h4>{title}</h4>
