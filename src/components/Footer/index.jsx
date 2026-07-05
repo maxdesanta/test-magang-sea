@@ -36,8 +36,8 @@ export default function Footer() {
                     <h3>Telusuri</h3>
                     <ul>
                         <li><NavLink to="/" >Beranda</NavLink></li>
-                        <li><NavLink to="/dunia" >Dunia</NavLink></li>
-                        <li><NavLink to="/otomotif" >Otomotif</NavLink></li>
+                        <li><NavLink to="/ekonomi" >Ekonomi</NavLink></li>
+                        <li><NavLink to="/tekno" >Teknologi</NavLink></li>
                         <li><NavLink to="/politik">Politik</NavLink></li>
                         <li><NavLink to="/olahraga" >Olahraga</NavLink></li>
                         <li><NavLink to="/nasional" >Nasional</NavLink></li>

@@ -19,7 +19,7 @@ export default function News({ endpoint, title }) {
             if(endpoint === "kumparan-news") {
                 const response = await newsApi();
                 setNewsData(response);
-            } else if (endpoint === "otomotif" || endpoint === "politik" || endpoint === "Tekno" || endpoint === "dunia") { 
+            } else if (endpoint === "otomotif" || endpoint === "politik" || endpoint === "Tekno" || endpoint === "ekonomi") { 
                 const response = await topNewsApi(endpoint);
                 setNewsData(response);
             } else {
@@ -89,14 +89,12 @@ export default function News({ endpoint, title }) {
                                     newsCategory = "Nasional";
                                 } else if (endpoint === "internasional") {
                                     newsCategory = "Internasional";
-                                } else if (endpoint === "otomotif") {
-                                    newsCategory = "Otomotif";
                                 } else if (endpoint === "politik") { 
                                     newsCategory = "Politik";
-                                } else if (endpoint === "tekno") {
-                                    newsCategory = "Tekno";
-                                } else if (endpoint === "dunia") {
-                                    newsCategory = "Dunia";
+                                } else if (endpoint === "teknologi") {
+                                    newsCategory = "Teknologi";
+                                } else if (endpoint === "ekonomi") {
+                                    newsCategory = "Ekonomi";
                                 } else if (item.categories && item.categories.length > 0) {
                                     newsCategory = item.categories[0]; 
                                 }
