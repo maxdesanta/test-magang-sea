@@ -1,3 +1,5 @@
+@import "./assets/styles/variables.css";
+
 body {
   margin: 0;
 }
@@ -10,15 +12,21 @@ body {
   box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Nunito Sans", sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-sans);
 }
 
 ul li {
   list-style-type: none;
 }
 
-input , textarea {
+input,
+textarea {
   border: none;
   outline: none;
   width: 100%;
@@ -26,11 +34,11 @@ input , textarea {
 }
 
 .active {
-  color: rgba(0, 144, 255, 1);
+  color: var(--color-primary);
 }
 
 a {
   text-decoration: none;
   color: inherit;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-body);
 }

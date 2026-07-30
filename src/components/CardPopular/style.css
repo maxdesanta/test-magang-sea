@@ -1,53 +1,53 @@
 .news-card {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px; 
-    max-width: 400px; 
-    padding: 10px;
-    font-family: "Nunito Sans", sans-serif;
-    padding-right: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-4);
+  max-width: 400px;
+  padding: var(--spacing-2);
+  font-family: var(--font-sans);
+  padding-right: var(--spacing-5);
 }
 
 .news-card .image-container .badge-number {
-    color: white;
-    background: black;
-    border-radius: 50%;
-    width: 28px;
-    height: 28px;
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  color: var(--color-white);
+  background: var(--color-black);
+  border-radius: var(--radius-pill);
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .image-container {
-    position: relative;
-    flex-shrink: 0; 
+  position: relative;
+  flex-shrink: 0;
 }
 
 .news-image {
-    width: 130px;
-    height: 130px;
-    object-fit: cover;
-    border-radius: 12px;
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
 }
 
 .content-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 110px;
-    width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 110px;
+  width: 50%;
 }
 
 .content-container .news-meta {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .content-container h4 {
-    margin: 0;
+  margin: 0;
 }

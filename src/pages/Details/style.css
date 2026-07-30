@@ -1,303 +1,303 @@
 .details-main {
-    display: flex;
-    gap: 40px;
-    align-items: start;
-    width: 100%;
-    max-width: 1500px;
-    margin: 0 auto;
+  display: flex;
+  gap: var(--spacing-8);
+  align-items: start;
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
 }
 
 .details-main .details-article {
-    width: 70%;
-    padding: 40px 0;
-    font-family: "Inter", sans-serif;
+  width: 70%;
+  padding: var(--spacing-8) 0;
+  font-family: var(--font-body);
 }
 
 .details-main .popular-news {
-    width: 30%;                     
-    padding: 40px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0px;
+  width: 30%;
+  padding: var(--spacing-8) 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
 }
 
 .details-main .popular-news > div {
-    border-bottom: 1px solid rgba(224, 224, 224, 1); 
-    padding-bottom: 20px;
-    margin-bottom: 20px;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--spacing-5);
+  margin-bottom: var(--spacing-5);
 }
 
 .details-main .popular-news > div:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-    margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 .details-main .popular-news > div:first-child {
-    border-bottom: none;
-    padding-bottom: 0;
-    margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 .details-main .details-article .details-article-title h1 {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .details-main .details-article .details-article-title {
-    margin-bottom: 35px;
+  margin-bottom: var(--spacing-7);
 }
 
 .details-main .details-article .news-meta {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  margin-top: var(--spacing-3);
 }
 
 .details-main .details-article .details-article-img {
-    margin-bottom: 20px;
+  margin-bottom: var(--spacing-5);
 }
 
 .details-main .details-article .details-article-img img {
-    width: 100%;
-    object-fit: cover;
-    border-radius: 20px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-xl);
 }
 
 .details-main .details-article .details-article-img .details-article-caption {
-    font-size: 0.8rem;
-    color: rgba(149, 158, 169, 1);
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
 }
 
 .details-main .details-article .details-article-img .details-article-content {
-    line-height: 1.8;
-    margin-top: 20px;
-    margin-bottom: 40px;
+  line-height: 1.8;
+  margin-top: var(--spacing-5);
+  margin-bottom: var(--spacing-8);
 }
 
 .details-main .details-article .details-article-img .details-article-content p {
-    color: rgba(82, 96, 113, 1);
-    font-size: 15px;
-    margin-bottom: 16px;
+  color: var(--color-text-medium);
+  font-size: 15px;
+  margin-bottom: 16px;
 }
 
 .details-article-comment {
-    margin-top: 50px;
+  margin-top: var(--spacing-9);
 }
 
 .details-article-comment .comment-group-input {
-    display: flex;
-    gap: 8px;
-    border-bottom: 1px solid rgba(224, 224, 224, 1);
-    padding: 0 20px 20px 20px;
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid var(--color-border);
+  padding: 0 var(--spacing-5) var(--spacing-5) var(--spacing-5);
 }
 
 .details-article-comment .comment-group-input img {
-    width: 50px;
-    height: 50px;
-    border-radius: 5px;
-    object-fit: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  object-fit: cover;
 }
 
 .details-article-comment .comment-group-input .comment-input {
-    border: 1px solid rgba(224, 224, 224, 1);
-    border-radius: 5px;
-    padding: 10px;
-    height: 150px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+  height: 150px;
 }
 
 .details-article-comment .comment-form p {
-    font-size: 0.7rem;
-    text-align: right;
+  font-size: 0.7rem;
+  text-align: right;
 }
 
 .details-article-comment .comment-form .btn-comment {
-    color: white;
-    background-color: rgba(0, 144, 255, 1);
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--radius-md);
 }
 
 .details-article-comment .comment-list {
-    border-bottom: 1px solid rgba(224, 224, 224, 1);
-    padding: 20px 10PX;
-    max-width: 800px;
-    font-family: "Nunito Sans", sans-serif;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--spacing-5) 10px;
+  max-width: 800px;
+  font-family: var(--font-sans);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .comment-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
 }
 
 .comment-item.reply {
-    padding-left: 52px; 
+  padding-left: 52px;
 }
 
 .comment-avatar {
-    width: 48px;
-    height: 48px;
-    border-radius: 8px; 
-    object-fit: cover;
-    flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
 .comment-avatar.small {
-    width: 40px;
-    height: 40px;
+  width: 40px;
+  height: 40px;
 }
 
 .comment-body {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .comment-meta {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
 }
 
 .comment-author {
-    font-weight: 700;
-    color: rgba(82, 96, 113, 1); 
-    text-transform: uppercase; 
+  font-weight: 700;
+  color: var(--color-text-medium);
+  text-transform: uppercase;
 }
 
 .comment-dot {
-    width: 4px;
-    height: 4px;
-    background-color: rgba(189, 189, 189, 1);
-    border-radius: 50%;
+  width: 4px;
+  height: 4px;
+  background-color: var(--color-dot);
+  border-radius: 50%;
 }
 
 .comment-date {
-    color: rgba(189, 189, 189, 1); 
+  color: var(--color-dot);
 }
 
 .comment-text {
-    margin: 0;
-    font-size: 15px;
-    line-height: 1.5;
-    color: rgba(51, 51, 51, 1);
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-text-dark);
 }
 
 .reply-btn {
-    background: none;
-    border: none;
-    color: rgba(0, 144, 255, 1); 
-    font-weight: 600;
-    font-size: 14px;
-    cursor: pointer;
-    padding: 0;
-    align-self: flex-start;
-    transition: color 0.2s ease;
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+  align-self: flex-start;
+  transition: color 0.2s ease;
 }
 
 .reply-btn:hover {
-    color: rgba(0, 146, 255, 1);
-    text-decoration: underline;
+  color: rgba(0, 146, 255, 1);
+  text-decoration: underline;
 }
 
 .table-pagination-container {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    width: 100%;
-    padding: 16px 0;
-    font-family: "Nunito Sans", sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: var(--spacing-4) 0;
+  font-family: "Nunito Sans", sans-serif;
 }
 
 .pagination-left {
-    display: flex;
-    align-items: center;
-    gap: 12px; 
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
 }
 
 .pagination-text {
-    font-size: 14px;
-    color: rgba(51, 51, 51, 1); 
+  font-size: 14px;
+  color: var(--color-text-dark);
 }
 
 .select-wrapper {
-    position: relative;
+  position: relative;
 }
 
 .select-wrapper select {
-    font-family: inherit;
-    font-size: 14px;
-    color: rgba(51, 51, 51, 1);
-    padding: 4px 24px 4px 8px; 
-    border: none;
-    border-bottom: 1px solid rgba(224, 224, 224, 1);
-    background: transparent;
-    cursor: pointer;
-    outline: none;
-    font-weight: 500;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--color-text-dark);
+  padding: var(--spacing-1) 24px var(--spacing-1) var(--spacing-2);
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+  font-weight: 500;
 }
 
 .pagination-right {
-    display: flex;
-    align-items: center;
-    gap: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .pagination-right button {
-    background: none;
-    border: none;
-    font-family: inherit;
-    font-size: 15px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: color 0.2s ease;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
 }
 
 .page-btn {
-    color: rgba(82, 96, 113, 1); 
-    font-weight: 500;
-    padding: 4px 8px;
+  color: var(--color-text-medium);
+  font-weight: 500;
+  padding: 4px 8px;
 }
 
 .page-btn.active {
-    color: rgba(0, 144, 255, 1); 
-    font-weight: 700;
+  color: var(--color-primary);
+  font-weight: 700;
 }
 
 .see-all-group {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
 }
 
 .see-all-group .see-all-btn {
-    padding: 10px 20px;
-    border: 1px solid rgba(0, 144, 255, 1);
-    background-color: rgba(226, 242, 255, 1);
-    color: rgba(0, 144, 255, 1);
-    outline: none;
-    border-radius: 8px;
-    cursor: pointer;
+  padding: 10px 20px;
+  border: 1px solid var(--color-primary);
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  outline: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
 }
 
 .sidebar-card-wrapper {
-    border-bottom: 1px solid rgba(226, 242, 255, 1);; 
-    padding-bottom: 16px;            
-    margin-bottom: 16px;          
+  border-bottom: 1px solid var(--color-primary-light);
+  padding-bottom: 16px;
+  margin-bottom: var(--spacing-4);
 }
 
 .sidebar-card-wrapper:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }

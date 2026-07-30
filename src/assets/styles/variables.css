@@ -1,0 +1,42 @@
+:root {
+  --color-primary: rgba(0, 144, 255, 1);
+  --color-primary-dark: rgba(0, 102, 204, 1);
+  --color-primary-light: rgba(226, 242, 255, 1);
+  --color-text-dark: rgba(51, 51, 51, 1);
+  --color-text-medium: rgba(82, 96, 113, 1);
+  --color-text-muted: rgba(149, 158, 169, 1);
+  --color-text-light: rgba(242, 242, 242, 1);
+  --color-text-soft: rgb(130, 130, 130);
+  --color-border: rgba(224, 224, 224, 1);
+  --color-border-soft: rgba(242, 242, 242, 1);
+  --color-surface: rgba(255, 255, 255, 1);
+  --color-surface-dark: #2d3748;
+  --color-surface-muted: #cbd5e1;
+  --color-surface-placeholder: #a0aec0;
+  --color-dot: rgba(189, 189, 189, 1);
+  --color-black: rgba(0, 0, 0, 1);
+  --color-white: rgba(255, 255, 255, 1);
+
+  --radius-sm: 5px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 20px;
+  --radius-pill: 50%;
+
+  --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-7: 32px;
+  --spacing-8: 40px;
+  --spacing-9: 50px;
+
+  --flex-center: flex; /* fallback for shared center patterns */
+  --font-sans: "Nunito Sans", sans-serif;
+  --font-display: "Poppins", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
