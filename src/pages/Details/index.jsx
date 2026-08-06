@@ -230,6 +230,7 @@ export default function Details() {
                   id={encodeURIComponent(item.link)}
                   title={item.title}
                   image={getValidImage(item.image)}
+                  date={item.isoDate}
                   category={relatedCategory}
                   fullData={updatedRelatedItem}
                 />
@@ -241,7 +242,6 @@ export default function Details() {
           <TitlePages title="Berita Terpopuler" />
           <div className="sidebar-popular-list">
             {topNews?.slice(0, 3).map((item, index) => {
-              
               return (
                 <div key={index} className="sidebar-card-wrapper">
                   <CardPopular
@@ -261,4 +261,3 @@ export default function Details() {
     </main>
   );
 }
-
