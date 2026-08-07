@@ -63,3 +63,109 @@ header.scrolled .menu ul li a.active {
   color: var(--color-white) !important;
   font-weight: 600;
 }
+
+header .menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  color: var(--color-text-soft);
+  line-height: 0;
+  border-radius: var(--radius-sm);
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+header.scrolled .menu-toggle {
+  color: var(--color-white);
+}
+
+header .menu-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+header.scrolled .menu-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+header .menu-toggle:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+header.scrolled .menu-toggle:focus-visible {
+  outline-color: var(--color-white);
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 14px 16px;
+  }
+
+  header .logo-group h1 {
+    font-size: 1.3rem;
+  }
+
+  header .logo-group img {
+    width: 44px;
+    height: auto;
+  }
+
+  header .menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  header .menu {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-sm);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  header .menu.open {
+    max-height: calc(100svh - 72px);
+    overflow-y: auto;
+  }
+
+  header .menu ul {
+    flex-direction: column;
+    gap: 0;
+    padding: 8px 0;
+    margin: 0;
+  }
+
+  header .menu ul li a {
+    display: block;
+    padding: 14px 24px;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--color-border-soft);
+  }
+
+  header .menu ul li:last-child a {
+    border-bottom: none;
+  }
+
+  header .menu ul li a.active {
+    background-color: var(--color-primary-light);
+  }
+
+  header.scrolled .menu {
+    background-color: var(--color-primary);
+  }
+
+  header.scrolled .menu ul li a {
+    color: var(--color-text-light);
+  }
+
+  header.scrolled .menu ul li a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--color-white) !important;
+  }
+}

@@ -4,9 +4,14 @@ import youtube from '../../assets/youtube.svg'
 import instagram from '../../assets/instagram.svg'
 import facebook from '../../assets/facebook.svg'
 import sendIcon from '../../assets/send.svg'
+import iconChevronDown from '../../assets/icon-chevron-down.svg'
 import { NavLink } from 'react-router-dom'
+import { useState } from 'react'
 
 export default function Footer() {
+    const [openTelusuri, setOpenTelusuri] = useState(false);
+    const [openBantuan, setOpenBantuan] = useState(false);
+
     return (
         <footer className="footer-container">
             <div className="footer-content">
@@ -33,8 +38,24 @@ export default function Footer() {
                     </div>
                 </div>
                 <div className="footer-column links-column">
-                    <h3>Telusuri</h3>
-                    <ul>
+                    <h3>
+                        <button
+                            type="button"
+                            className="footer-toggle"
+                            aria-expanded={openTelusuri}
+                            aria-controls="footer-menu-telusuri"
+                            onClick={() => setOpenTelusuri((prev) => !prev)}
+                        >
+                            Telusuri
+                            <img
+                                src={iconChevronDown}
+                                alt=""
+                                aria-hidden="true"
+                                className={openTelusuri ? 'open' : ''}
+                            />
+                        </button>
+                    </h3>
+                    <ul id="footer-menu-telusuri" className={openTelusuri ? 'open' : ''}>
                         <li><NavLink to="/" >Beranda</NavLink></li>
                         <li><NavLink to="/ekonomi" >Ekonomi</NavLink></li>
                         <li><NavLink to="/tekno" >Teknologi</NavLink></li>
@@ -45,8 +66,24 @@ export default function Footer() {
                     </ul>
                 </div>
                 <div className="footer-column links-column">
-                    <h3>Bantuan</h3>
-                    <ul>
+                    <h3>
+                        <button
+                            type="button"
+                            className="footer-toggle"
+                            aria-expanded={openBantuan}
+                            aria-controls="footer-menu-bantuan"
+                            onClick={() => setOpenBantuan((prev) => !prev)}
+                        >
+                            Bantuan
+                            <img
+                                src={iconChevronDown}
+                                alt=""
+                                aria-hidden="true"
+                                className={openBantuan ? 'open' : ''}
+                            />
+                        </button>
+                    </h3>
+                    <ul id="footer-menu-bantuan" className={openBantuan ? 'open' : ''}>
                     <li><a href="#kontak">Kontak Kami</a></li>
                     <li><a href="#laporan">Laporan Pembajakan</a></li>
                     <li><a href="#kebijakan">Kebijakan</a></li>

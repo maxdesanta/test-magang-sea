@@ -53,3 +53,27 @@
 .slide-card .slide-img img {
     border-radius: 30px;
 }
+
+@media (max-width: 768px) {
+    .slide-card {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .slide-card .slide-img {
+        order: -1;
+        width: 100%;
+    }
+
+    .slide-card .slide-text {
+        width: 100%;
+    }
+
+    .slide-card .slide-text h1 {
+        font-size: 1.6rem;
+    }
+
+    .slide-card .slide-text p {
+        font-size: 0.95rem;
+    }
+}

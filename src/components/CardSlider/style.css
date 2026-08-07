@@ -13,8 +13,46 @@
     font-weight: 600;
 }
 
+
 .card-slider .title-card-slider p {
     color: white;
     font-family: "Montserrat", sans-serif;
     font-size: 1.2rem;
+}
+
+.card-slider .image-card-slider img {
+    width: min(100vw, 1200px);
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .card-slider {
+        flex-direction: column;
+        padding: 24px 20px;
+        gap: 16px;
+    }
+
+    .card-slider .image-card-slider {
+        order: -1;
+        align-self: center;
+    }
+
+    .card-slider .image-card-slider img {
+        width: min(100%, 450px);
+        height: auto;
+    }
+
+    .card-slider .title-card-slider h1 {
+        font-size: 1.4rem;
+    }
+
+    .card-slider .title-card-slider p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-slider .title-card-slider h1 {
+        font-size: 1.5rem;
+    }
 }

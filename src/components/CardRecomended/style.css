@@ -37,3 +37,23 @@
   text-decoration: none;
   color: inherit;
 }
+
+@media (max-width: 768px) {
+  .card-recomended {
+    width: 48%;
+  }
+
+  .text-card h4 {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-recomended {
+    width: 100%;
+  }
+
+  .card-recomended .image-card img {
+    height: 150px;
+  }
+}

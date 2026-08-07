@@ -1,3 +1,15 @@
 main {
     padding: 120px 30px 400px 30px;
 }
+
+@media (max-width: 768px) {
+    main {
+        padding: 100px 16px 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        padding: 88px 16px 40px;
+    }
+}

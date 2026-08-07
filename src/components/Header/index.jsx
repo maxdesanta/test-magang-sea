@@ -6,8 +6,13 @@ import { useEffect, useState } from 'react';
 
 export default function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
     const location = useLocation();
     const detailPage = location.pathname.startsWith('/detail');
+
+    useEffect(() => {
+        setMenuOpen(false);
+    }, [location.pathname]);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -26,15 +31,33 @@ export default function Header() {
                 {isScrolled ? <img src={logoLight} alt="logo" width={60} /> : <img src={logo} alt="logo" width={60} />}
                 <h1>Berita Kini</h1>
             </div>
-            <div className="menu">
+            <button
+                type="button"
+                className="menu-toggle"
+                aria-label={menuOpen ? "Tutup menu" : "Buka menu"}
+                aria-expanded={menuOpen}
+                aria-controls="site-menu"
+                onClick={() => setMenuOpen((prev) => !prev)}
+            >
+                {menuOpen ? (
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                ) : (
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M3 6H21M3 12H21M3 18H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                )}
+            </button>
+            <div className={`menu ${menuOpen ? 'open' : ''}`} id="site-menu">
                 <ul>
-                    <li><NavLink className={({ isActive }) => (isActive && !detailPage ? 'active' : '')} to="/" end>Beranda</NavLink></li>
-                    <li><NavLink className={({ isActive }) => (isActive && !detailPage ? 'active' : '')} to="/terbaru">Terbaru</NavLink></li>
-                    <li><NavLink className={({ isActive }) => (isActive && !detailPage ? 'active' : '')} to="/hiburan">Hiburan</NavLink></li>
-                    <li><NavLink className={({ isActive }) => (isActive && !detailPage ? 'active' : '')} to="/gaya-hidup">Gaya Hidup</NavLink></li>
-                    <li><NavLink className={({ isActive }) => (isActive && !detailPage ? 'active' : '')} to="/olahraga">Olahraga</NavLink></li>
-                    <li><NavLink className={({ isActive }) => (isActive && !detailPage ? 'active' : '')} to="/nasional">Nasional</NavLink></li>
-                    <li><NavLink className={({ isActive }) => (isActive && !detailPage ? 'active' : '')} to="/internasional">Internasional</NavLink></li>
+                    <li><NavLink className={({ isActive }) => (isActive && !detailPage ? 'active' : '')} to="/" end onClick={() => setMenuOpen(false)}>Beranda</NavLink></li>
+                    <li><NavLink className={({ isActive }) => (isActive && !detailPage ? 'active' : '')} to="/terbaru" onClick={() => setMenuOpen(false)}>Terbaru</NavLink></li>
+                    <li><NavLink className={({ isActive }) => (isActive && !detailPage ? 'active' : '')} to="/hiburan" onClick={() => setMenuOpen(false)}>Hiburan</NavLink></li>
+                    <li><NavLink className={({ isActive }) => (isActive && !detailPage ? 'active' : '')} to="/gaya-hidup" onClick={() => setMenuOpen(false)}>Gaya Hidup</NavLink></li>
+                    <li><NavLink className={({ isActive }) => (isActive && !detailPage ? 'active' : '')} to="/olahraga" onClick={() => setMenuOpen(false)}>Olahraga</NavLink></li>
+                    <li><NavLink className={({ isActive }) => (isActive && !detailPage ? 'active' : '')} to="/nasional" onClick={() => setMenuOpen(false)}>Nasional</NavLink></li>
+                    <li><NavLink className={({ isActive }) => (isActive && !detailPage ? 'active' : '')} to="/internasional" onClick={() => setMenuOpen(false)}>Internasional</NavLink></li>
                 </ul>
             </div>
         </header>
