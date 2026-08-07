@@ -9,7 +9,9 @@ import { fetchNewsPageData } from "../../redux/newsSlice";
 
 export default function News({ endpoint, title }) {
   const dispatch = useDispatch();
-  const { newsData } = useSelector((state) => state.news);
+  const { newsData, status, error } = useSelector((state) => state.news);
+  const isLoading = status === "loading";
+  const isError = status === "failed";
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const itemPerPage = 8;
@@ -19,7 +21,7 @@ export default function News({ endpoint, title }) {
   }, [dispatch, endpoint]);
 
   const filteredNews = newsData.filter((item) => {
-    return item.title.toLowerCase().includes(searchQuery.toLowerCase());
+    return item.title?.toLowerCase().includes(searchQuery.toLowerCase());
   });
 
   const handleSearchChange = (e) => {
@@ -38,6 +40,23 @@ export default function News({ endpoint, title }) {
 
   return (
     <main>
+      {isError && (
+        <div className="news-status news-status-error" role="alert">
+          <p>{error || "Gagal memuat berita."}</p>
+          <button
+            type="button"
+            onClick={() => dispatch(fetchNewsPageData({ endpoint }))}
+          >
+            Coba Lagi
+          </button>
+        </div>
+      )}
+      {isLoading && (
+        <div className="news-status" aria-live="polite">
+          <span className="news-spinner" aria-hidden="true"></span>
+          <p>Memuat berita...</p>
+        </div>
+      )}
       <div className="recomended-news-group">
         <div className="group-filter">
           <TitlePages title={title} />
@@ -46,6 +65,7 @@ export default function News({ endpoint, title }) {
             <input
               type="text"
               placeholder="Cari Berita..."
+              aria-label="Cari berita"
               value={searchQuery}
               onChange={handleSearchChange}
             />
@@ -60,7 +80,7 @@ export default function News({ endpoint, title }) {
                 gridColumn: "1/-1",
                 textAlign: "center",
                 padding: "40px",
-                color: "#888",
+                color: "var(--color-text-muted)",
               }}
             >
               Berita yang kamu cari tidak ditemukan...
@@ -71,7 +91,6 @@ export default function News({ endpoint, title }) {
                 typeof item.image === "object"
                   ? item.image?.large || item.image?.medium || item.image?.small
                   : item.image || "https://placehold.co/600x400?text=No+Image";
-
               let newsCategory = "News";
 
               if (endpoint === "hiburan") {

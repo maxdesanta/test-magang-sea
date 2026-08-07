@@ -14,7 +14,7 @@ Situs berita berbasis React 19 + Vite (JavaScript/JSX murni, tanpa TypeScript). 
 - Data berita berasal dari API eksternal. Instance axios ada di `src/api/api.js` (base `https://berita-indo-api-next.vercel.app/api`); satu modul wrapper per feed di `src/api/` (`newsApi`, `topNewsApi`, `cnnApi`, `slideApi`, `todayNewsApi`).
 - Routing endpoint→API ada di `src/redux/newsSlice.js` pada `fetchNewsPageData` (jangan hardcode di halaman): `kumparan-news` → `newsApi`, `otomotif`/`politik`/`ekonomi` → `topNewsApi`, selain itu → `cnnApi`.
 - Halaman Homepage dan News menormalkan tiap artikel (menambahkan `categories` sebagai string/array dan `sourcePage`) lalu mengirim objek lengkap sebagai `fullData` → `NewsCardLink` → `<Link state={{ articleData }}>`.
-- Halaman `Details` membaca artikel dari `location.state.articleData` — **refresh halaman pada `/detail/:link` menghilangkan state tersebut dan artikel tampil kosong**. Param rute hanya membawa link yang di-encode.
+- Halaman `Details` membaca artikel dari `location.state.articleData` — **refresh halaman pada `/detail/:link` menghilangkan state tersebut** sehingga artikel tidak tampil (kini ada guard: jika `article` kosong, `Details` menampilkan empty state dengan tombol kembali). Param rute hanya membawa link yang di-encode.
 
 ## Konvensi / hal yang perlu diperhatikan
 - `image` bisa berupa string atau objek `{ small, medium, large }` — tangani keduanya (gunakan helper `getValidImage`; halaman News juga punya fallback inline).

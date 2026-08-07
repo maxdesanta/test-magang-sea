@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 export default function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
     const location = useLocation();
-    const detailPage = location.pathname.startsWith('/details');
+    const detailPage = location.pathname.startsWith('/detail');
 
     useEffect(() => {
         const handleScroll = () => {
@@ -19,7 +19,7 @@ export default function Header() {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    })
+    }, [])
     return (
         <header className={isScrolled ? 'scrolled' : ''}>
             <div className="logo-group">

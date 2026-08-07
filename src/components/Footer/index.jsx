@@ -55,9 +55,14 @@ export default function Footer() {
                 <div className="footer-column newsletter-column">
                     <h3>Berlangganan Berita Terbaru</h3>
                     <div className="subscribe-box">
-                        <input type="email" placeholder="Masukan email" />
-                        <button type="submit" className="subscribe-btn">
-                            <img src={sendIcon} alt="logo" width={42} />
+                        <label htmlFor="newsletter-email" className="sr-only">Alamat email</label>
+                        <input
+                            id="newsletter-email"
+                            type="email"
+                            placeholder="Masukan email"
+                        />
+                        <button type="submit" className="subscribe-btn" aria-label="Berlangganan">
+                            <img src={sendIcon} alt="" width={42} />
                         </button>
                     </div>
                 </div>

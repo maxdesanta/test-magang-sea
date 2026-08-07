@@ -16,7 +16,7 @@ export default function Router() {
                 <Route path="/nasional" element={<News endpoint="nasional" title="Berita Nasional" />} />
                 <Route path="/internasional" element={<News endpoint="internasional" title="Berita Internasional" />} />
                 <Route path="/ekonomi" element={<News endpoint="ekonomi" title="Berita Ekonomi" />} />
-                <Route path="/tekno" element={<News endpoint="teknologi" title="Berita Teknnologi" />} />
+                <Route path="/tekno" element={<News endpoint="teknologi" title="Berita Teknologi" />} />
                 <Route path="/politik" element={<News endpoint="politik" title="Berita Politik" />} />
                 <Route path='/detail/:link' element={<Details />} />
             </Route>

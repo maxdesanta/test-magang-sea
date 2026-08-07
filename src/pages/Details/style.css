@@ -301,3 +301,22 @@
   margin-bottom: 0;
   padding-bottom: 0;
 }
+
+.details-article-empty {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: var(--spacing-9) 0;
+  font-family: var(--font-body);
+  text-align: center;
+  color: var(--color-text-medium);
+}
+
+.details-article-empty h1 {
+  color: var(--color-text-dark);
+  margin-bottom: var(--spacing-4);
+}
+
+.details-article-empty p {
+  margin: 0 auto var(--spacing-6);
+  max-width: 480px;
+}

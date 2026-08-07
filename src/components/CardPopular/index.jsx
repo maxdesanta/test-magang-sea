@@ -1,5 +1,6 @@
 import DateWritter from "../DateWritter";
 import NewsCardLink from "../NewsCardLink";
+import { getValidImage } from "../../helper/getValidImage";
 import "./style.css";
 
 export default function CardPopular({
@@ -23,7 +24,7 @@ export default function CardPopular({
           <div className="badge-number">
             <p>{number}</p>
           </div>
-          <img src={image} alt="Berita" className="news-image" />
+          <img src={getValidImage(image)} alt={title || "Berita"} className="news-image" />
         </div>
 
         <div className="content-container">

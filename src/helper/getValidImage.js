@@ -1,4 +1,4 @@
-const DEFAULT_IMAGE = "https://taawon.com/images_default/default.jpg";
+const DEFAULT_IMAGE = "https://placehold.co/600x400?text=No+Image";
 
 export function getValidImage(image) {
   if (!image && image !== 0) return DEFAULT_IMAGE;

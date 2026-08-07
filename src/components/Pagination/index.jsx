@@ -45,13 +45,13 @@ export default function Pagination({ currentPage, totalPages, totalResults, inde
         <div className="pagination-container">
             {/* Bagian Kiri: Info Teks */}
             <div className="pagination-info">
-                Showing {totalResults === 0 ? 0 : indexOfFirstItem + 1} to {Math.min(indexOfLastItem, totalResults)} of {totalResults} results
+                Menampilkan {totalResults === 0 ? 0 : indexOfFirstItem + 1} sampai {Math.min(indexOfLastItem, totalResults)} dari {totalResults} hasil
             </div>
 
             {/* Bagian Kanan: Tombol Navigasi */}
             <div className="pagination-nav">
                 <button className="nav-arrow" disabled={currentPage === 1} onClick={() => onPageChange(currentPage - 1)}>
-                    &larr; Previous
+                    &larr; Sebelumnya
                 </button>
 
                 {pageNumbers.map((number, index) => {
@@ -75,7 +75,7 @@ export default function Pagination({ currentPage, totalPages, totalResults, inde
                 })}
 
                 <button className="nav-arrow" disabled={currentPage === totalPages} onClick={() => onPageChange(currentPage + 1)}>
-                    Next &rarr;
+                    Berikutnya &rarr;
                 </button>
             </div>
         </div>

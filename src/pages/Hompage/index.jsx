@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import "./style.css";
@@ -16,7 +16,11 @@ import { fetchHomepageData } from "../../redux/newsSlice";
 
 export default function Homepage() {
   const dispatch = useDispatch();
-  const { topNews, todayNews, sliderNews } = useSelector((state) => state.news);
+  const { topNews, todayNews, sliderNews, status, error } = useSelector(
+    (state) => state.news,
+  );
+  const isLoading = status === "loading";
+  const isError = status === "failed";
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [currentBotomSlide, setCurrentBotomSlide] = useState(0);
@@ -79,7 +83,7 @@ export default function Homepage() {
   };
 
   const filteredNews = todayNews.filter((item) => {
-    return item.title.toLowerCase().includes(searchQuery.toLowerCase());
+    return item.title?.toLowerCase().includes(searchQuery.toLowerCase());
   });
 
   const handleSearchChange = (e) => {
@@ -97,6 +101,20 @@ export default function Homepage() {
 
   return (
     <main>
+      {isError && (
+        <div className="news-status news-status-error" role="alert">
+          <p>{error || "Gagal memuat berita."}</p>
+          <button type="button" onClick={() => dispatch(fetchHomepageData())}>
+            Coba Lagi
+          </button>
+        </div>
+      )}
+      {isLoading && (
+        <div className="news-status" aria-live="polite">
+          <span className="news-spinner" aria-hidden="true"></span>
+          <p>Memuat berita...</p>
+        </div>
+      )}
       <div className="slide-group">
         {sliderData.length > 0 && (
           <>
@@ -122,9 +140,8 @@ export default function Homepage() {
             };
 
             return (
-              <>
+              <Fragment key={index}>
                 <CardPopular
-                  key={index}
                   id={encodeURIComponent(updatedTopItem.link)}
                   number={index + 1}
                   image={updatedTopItem.image}
@@ -134,7 +151,7 @@ export default function Homepage() {
                 />
                 <div className="vertical-line"></div>
                 <div className="vertical-line-2"></div>
-              </>
+              </Fragment>
             );
           })}
         </div>
@@ -147,10 +164,11 @@ export default function Homepage() {
             <input
               type="text"
               placeholder="Cari Berita"
+              aria-label="Cari berita"
               value={searchQuery}
               onChange={handleSearchChange}
             />
-            <img src={SearchIcon} />
+            <img src={SearchIcon} alt="Cari berita" />
           </div>
         </div>
         <div className="container-recomended-news">
@@ -160,7 +178,7 @@ export default function Homepage() {
                 gridColumn: "1/-1",
                 textAlign: "center",
                 padding: "40px",
-                color: "#888",
+                color: "var(--color-text-muted)",
               }}
             >
               Berita yang kamu cari tidak ditemukan...

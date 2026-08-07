@@ -42,7 +42,6 @@ export const fetchNewsPageData = createAsyncThunk(
       } else if (
         endpoint === "otomotif" ||
         endpoint === "politik" ||
-        endpoint === "Tekno" ||
         endpoint === "ekonomi"
       ) {
         response = await topNewsApi(endpoint);

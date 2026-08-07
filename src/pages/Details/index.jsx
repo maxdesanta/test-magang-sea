@@ -1,5 +1,5 @@
 // import state
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 // import components
 import DateWritter from "../../components/DateWritter";
@@ -30,23 +30,23 @@ import { todayNewsApi } from "../../api/todayNewsApi";
 export default function Details() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [topNews, setTopNews] = useState();
+  const [topNews, setTopNews] = useState([]);
   const [relatedNews, setRelatedNews] = useState([]);
   const [comment, setComment] = useState("");
+  const [submittedComment, setSubmittedComment] = useState(null);
   const article = location.state?.articleData;
   const rawCategory = article?.categories;
   const displayCategory = getCategoryName(rawCategory, "News");
   const source = article?.sourcePage || "Beranda";
 
-  const getDataTopNews = async () => {
+  const getDataTopNews = useCallback(async () => {
     try {
       const response = await topNewsApi("top-news");
-      console.log(response);
-      setTopNews(response);
+      setTopNews(response || []);
     } catch (error) {
       console.log(error.message);
     }
-  };
+  }, []);
 
   const handleSeeAll = () => {
     if (source === "Beranda" || source === "Terbaru") {
@@ -62,11 +62,18 @@ export default function Details() {
     setComment(truncatedText);
   };
 
+  const handleCommentSubmit = (e) => {
+    e.preventDefault();
+    if (!comment.trim()) return;
+    setSubmittedComment(comment);
+    setComment("");
+  };
+
   const currentWordCount = comment.trim().split(/\s+/).filter(Boolean).length;
 
-  const fetchRelatedNews = async () => {
+  const fetchRelatedNews = useCallback(async () => {
     try {
-      const response = await todayNewsApi();
+      const response = (await todayNewsApi()) || [];
       const clearCurrentArticle = response.filter(
         (item) => item.link !== article?.link,
       );
@@ -88,14 +95,36 @@ export default function Details() {
     } catch (error) {
       console.log("Gagal memuat berita terkait:", error.message);
     }
-  };
+  }, [article?.link, displayCategory]);
 
   useEffect(() => {
     fetchRelatedNews();
     getDataTopNews();
 
     return () => setRelatedNews([]);
-  }, [article?.link, displayCategory]);
+  }, [fetchRelatedNews, getDataTopNews]);
+
+  if (!article) {
+    return (
+      <main>
+        <MenuDetails titleCategory="Artikel" source="Beranda" />
+        <div className="details-article-empty">
+          <h1>Artikel tidak ditemukan</h1>
+          <p>
+            Halaman ini hanya bisa dibuka dari kartu berita. Silakan kembali ke
+            beranda lalu pilih artikel untuk dibaca.
+          </p>
+          <button
+            type="button"
+            className="btn-comment"
+            onClick={() => navigate("/")}
+          >
+            Kembali ke Beranda
+          </button>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main>
@@ -119,9 +148,9 @@ export default function Details() {
           <div className="details-article-comment">
             <TitlePages title="Komentar" />
             <div className="comment-group-input">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1080&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1080&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Avatar Anda" />
 
-              <div className="comment-form">
+              <form className="comment-form" onSubmit={handleCommentSubmit}>
                 <div className="comment-input">
                   <textarea
                     placeholder="Tulis komentar"
@@ -132,16 +161,29 @@ export default function Details() {
                   ></textarea>
                 </div>
                 <p>{currentWordCount} / 50</p>
-                <button
-                  type="submit"
-                  className="btn-comment"
-                  onClick={handleSeeAll}
-                >
+                <button type="submit" className="btn-comment">
                   Kirim
                 </button>
-              </div>
+              </form>
             </div>
             <div className="comment-list">
+              {submittedComment && (
+                <div className="comment-item">
+                  <img
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop"
+                    alt="Avatar Anda"
+                    className="comment-avatar"
+                  />
+                  <div className="comment-body">
+                    <div className="comment-meta">
+                      <span className="comment-author">Anda</span>
+                      <span className="comment-dot"></span>
+                      <span className="comment-date">Baru saja</span>
+                    </div>
+                    <p className="comment-text">{submittedComment}</p>
+                  </div>
+                </div>
+              )}
               <div className="comment-item">
                 <img
                   src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150&auto=format&fit=crop"
@@ -213,7 +255,9 @@ export default function Details() {
           </div>
           <div className="see-all-group">
             <TitlePages title="Berita Terkait" />
-            <button className="see-all-btn">Lihat Semua</button>
+            <button type="button" className="see-all-btn" onClick={handleSeeAll}>
+              Lihat Semua
+            </button>
           </div>
           <div className="container-popular-news">
             {relatedNews.map((item, index) => {
